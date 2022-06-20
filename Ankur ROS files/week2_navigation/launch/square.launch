@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="week2_navigation" type="move_square.py" name="Squarebot" output="screen"/>
+</launch>

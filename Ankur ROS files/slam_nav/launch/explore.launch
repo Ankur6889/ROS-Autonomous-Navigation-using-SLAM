@@ -1,0 +1,5 @@
+<launch>
+  <!-- Node for autonomous mapping -->
+  <node name="explore" pkg="slam_nav" type="explore.py" output="screen"/>
+
+</launch>
