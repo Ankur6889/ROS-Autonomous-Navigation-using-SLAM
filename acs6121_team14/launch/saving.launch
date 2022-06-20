@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="map_server" type="map_saver" name="map_saver1" args="-f $(find acs6121_team14)/maps/map_exploration"> 
+    </node>
+</launch>

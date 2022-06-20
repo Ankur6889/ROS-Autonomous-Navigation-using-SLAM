@@ -1,0 +1,5 @@
+<launch>
+  <!-- Node for autonomous mapping -->
+  <node name="explore" pkg="acs6121_team14" type="explore.py" output="screen"/>
+
+</launch>
