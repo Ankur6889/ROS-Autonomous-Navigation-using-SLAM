@@ -67,7 +67,7 @@ class Explore:
         self.robot_theta_z=0
         self.completion = True
         # part to visit: idn to visit, if visited, -1
-        self.visitFlag=[12,17,16,11,6,7,8,13,18,23,22,21,20,15,10,5,0,1,2,3,4,9,14,19,24]
+        self.visitFlag=[0,1,3,2,6,5,7,8]
         # generate 5 times before move to next point
         self.itr_n=5
 
@@ -118,7 +118,7 @@ class Explore:
     def numToRandPos(self, n):
         tolerance=0.25
         size=1.1
-        if n<5 and n>0:
+        if n<4 and n>0:
             lower=-1.65+size*(n-1)
             upper=-1.65+size*n
             if n==1:
@@ -137,8 +137,8 @@ class Explore:
         return 0
     
     def idnToP(self, idn):# idn should be 0~8
-        row=idn/5 # 0,1,2,3
-        col=idn%5
+        row=idn/3 # 0,1,2
+        col=idn%3
         x=self.numToRandPos(col+1)
         y=self.numToRandPos(row+1)
         return self.posToId(x, y)
@@ -148,21 +148,21 @@ class Explore:
         col_n=n%3
         self.x=self.numToRandPos(col_n+1)
         self.y=self.numToRandPos(row_n+1)"""
-        row=math.floor((y+2.75)/1.1)
-        col=math.floor((x+2.75)/1.1)
-        idn=round(row*5+col)
+        row=math.floor((y+1.65)/1.1)
+        col=math.floor((x+1.65)/1.1)
+        idn=round(row*3+col)
         print(f" transfer ({self.x, self.y}) to {idn} at row {row}, col {col}")
         return idn
         
     def isInIdn(self, x,y):
         size=1.1
-        row=math.floor((y+2.75)/1.1)
-        col=math.floor((x+2.75)/1.1)
+        row=math.floor((y+1.65)/1.1)
+        col=math.floor((x+1.65)/1.1)
         lower_x=-1.65+size*row
         lower_y=-1.65+size*col
         tolerance=0.2
         if x>lower_x+tolerance and x<lower_x+size-tolerance and y>lower_y+tolerance and y<lower_y+size-tolerance:
-            return round(row*5+col)
+            return round(row*3+col)
         else:
             return -1
 
@@ -225,8 +225,8 @@ class Explore:
                         break
                     for n in candidates:
                         # generate a random point in block n: 0~8
-                        row_n=math.floor(n/5)
-                        col_n=n%5
+                        row_n=math.floor(n/3)
+                        col_n=n%3
                         itr=0
                         self.x=self.numToRandPos(col_n+1)
                         self.y=self.numToRandPos(row_n+1)

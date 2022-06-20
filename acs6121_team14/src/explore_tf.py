@@ -81,7 +81,7 @@ class Explore:
         self.robot_theta_z=0
         self.completion = True
         # part to visit: idn to visit, if visited, -1
-        self.visitFlag=[0,12,15,3,6,2,7,11,14,13,1,4,5,8,9,10]
+        self.visitFlag=[0,1,3,2,6,5,7,8]
         # generate 5 times before move to next point
         self.itr_n=5
 
@@ -139,7 +139,7 @@ class Explore:
     def numToRandPos(self, n): # n is idn in odom, return pos in map
         tolerance=0.25
         size=1.1
-        if n<5 and n>0:
+        if n<4 and n>0:
             lower=-1.65+size*(n-1)
             upper=-1.65+size*n
             if n==1:
